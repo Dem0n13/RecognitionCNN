@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
@@ -85,7 +84,7 @@ namespace Recognition.Application
         [Obsolete("Нормализованные изображения")]
         public void TrainNetwork(MNistImage[] images, CancellationToken cancellation)
         {
-            ArrayDebug.AssertNotNull(images);
+            Debug.AssertNotNull(images);
             Debug.Assert(cancellation != null);
             if (_statRefresher != null && _statRefresher.Started) return;
 
@@ -145,8 +144,9 @@ namespace Recognition.Application
 
         public void TestNetwork(MNistImage[] images, CancellationToken cancellation)
         {
-            ArrayDebug.AssertNotNull(images);
-            Debug.Assert(cancellation != null);
+            Debug.AssertNotNull(images);
+            Debug.AssertNotNull(cancellation);
+
             if (_statRefresher != null && _statRefresher.Started) return;
 
             _cancelTrainToken = cancellation;

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Drawing;
+﻿using System.Drawing;
 using Recognition.Utils;
 
 namespace Recognition.Image
@@ -18,7 +17,7 @@ namespace Recognition.Image
 
         public MNistImage(int label, byte[][] data)
         {
-            ArrayDebug.AssertNotNull(data);
+            Debug.AssertNotNull(data);
             Debug.Assert(data.Length > 0);
 
             Label = label;

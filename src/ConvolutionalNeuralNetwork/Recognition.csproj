@@ -66,7 +66,7 @@
     <Compile Include="Utils\ArrayHelper.cs" />
     <Compile Include="Utils\ArrayMath.cs" />
     <Compile Include="Utils\KernelParams.cs" />
-    <Compile Include="Utils\ArrayDebug.cs" />
+    <Compile Include="Utils\Debug.cs" />
     <Compile Include="NeuralNet\Layer.cs" />
     <Compile Include="NeuralNet\ConvolutionalLayer.cs" />
     <Compile Include="NeuralNet\InputConnection.cs" />

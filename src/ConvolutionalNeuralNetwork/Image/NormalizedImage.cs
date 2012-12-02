@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using Recognition.NeuralNet;
 using Recognition.Utils;
@@ -24,7 +23,7 @@ namespace Recognition.Image
         {
             Debug.Assert(srcImage != null);
             Debug.Assert(srcImage.Label != null);
-            ArrayDebug.AssertNotNull(srcImage.RawData);
+            Debug.AssertNotNull(srcImage.RawData);
 
             InitializeCanvas(srcImage.Width, srcImage.Height);
             Label = srcImage.Label;
@@ -61,8 +60,8 @@ namespace Recognition.Image
 
         public NormalizedImage(Layer srcLayer)
         {
-            Debug.Assert(srcLayer != null);
-            Debug.Assert(srcLayer.Neurons != null);
+            Debug.AssertNotNull(srcLayer);
+            Debug.AssertNotNull(srcLayer.Neurons);
             Debug.Assert(srcLayer.Neurons.Length > 0);
 
             var neurons = srcLayer.Neurons;
@@ -86,8 +85,8 @@ namespace Recognition.Image
 
         public NormalizedImage(Layer2D srcLayer)
         {
-            Debug.Assert(srcLayer != null);
-            ArrayDebug.AssertNotNull(srcLayer.Neurons2D);
+            Debug.AssertNotNull(srcLayer);
+            Debug.AssertNotNull(srcLayer.Neurons2D);
 
             InitializeCanvas(srcLayer.Width, srcLayer.Height);
 
@@ -102,8 +101,8 @@ namespace Recognition.Image
 
         public NormalizedImage(ConvolutionalLayer srcLayer)
         {
-            Debug.Assert(srcLayer != null);
-            Debug.Assert(srcLayer.FeatureMaps != null);
+            Debug.AssertNotNull(srcLayer);
+            Debug.AssertNotNull(srcLayer.FeatureMaps);
             Debug.Assert(srcLayer.FeatureMaps.Length > 0);
 
             const int maxRowsInColumn = 10;
@@ -131,10 +130,10 @@ namespace Recognition.Image
 
         public void PadCanvas(int newWidth, int newHeight)
         {
-            if (Width == newWidth && Height == newHeight) return;
-            
             Debug.Assert(newWidth >= Width);
             Debug.Assert(newHeight >= Height);
+            
+            if (Width == newWidth && Height == newHeight) return;
 
             var oldData = RawData;
             var oldWidth = Width;

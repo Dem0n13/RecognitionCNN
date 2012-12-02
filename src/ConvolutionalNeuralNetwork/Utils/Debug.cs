@@ -3,8 +3,14 @@ using System.Diagnostics;
 
 namespace Recognition.Utils
 {
-    public static class ArrayDebug
+    public static class Debug
     {
+        [Conditional("DEBUG")]
+        public static void Assert(bool condition, string message = null)
+        {
+            if (!condition) throw new InvalidOperationException(message);
+        }
+        
         [Conditional("DEBUG")]
         public static void AssertNotNull<T>(T item)
         {

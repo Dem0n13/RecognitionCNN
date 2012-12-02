@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Text;
+﻿using System.Drawing;
 using Recognition.Utils;
 
 namespace Recognition.Image

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Recognition.Utils;
+﻿using Recognition.Utils;
 
 namespace Recognition.NeuralNet
 {
@@ -146,7 +145,7 @@ namespace Recognition.NeuralNet
                 for (var x = 0; x < InputLayer.Width; x++, n++)
                 {
                     Debug.Assert(InputLayer.Neurons[n] == InputLayer.Neurons2D[y][x],
-                                 "n => y, x", "{0} => {1}, {2}", n, y, x);
+                                 string.Format("n => y, x: {0} => {1}, {2}", n, y, x));
                 }
             }
 
@@ -160,8 +159,8 @@ namespace Recognition.NeuralNet
         /// <returns>Выходной вектор-ответ</returns>
         public double[] Calculate(double[][] inputImage)
         {
-            ArrayDebug.AssertEqualSize(inputImage, InputImageWidth, InputImageHeight);
-            ArrayDebug.AssertValuesInRange(inputImage, -1.0, 1.0);
+            Debug.AssertEqualSize(inputImage, InputImageWidth, InputImageHeight);
+            Debug.AssertValuesInRange(inputImage, -1.0, 1.0);
 
             PropagateForward(inputImage);
 
@@ -176,7 +175,7 @@ namespace Recognition.NeuralNet
         /// <param name="targetOutput"></param>
         public void Train(double[][] inputImage, double[] targetOutput)
         {
-            ArrayDebug.AssertEqualSize(inputImage, InputImageWidth, InputImageHeight);
+            Debug.AssertEqualSize(inputImage, InputImageWidth, InputImageHeight);
             Debug.Assert(targetOutput.Length == OutputLayer.Neurons.Length);
             
             // прогоняем картинку через сеть

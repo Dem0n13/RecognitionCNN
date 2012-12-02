@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
+using Recognition.Utils;
 
 namespace Recognition.NeuralNet
 {
@@ -16,7 +16,7 @@ namespace Recognition.NeuralNet
 
         public static Network GetNetwork(string path)
         {
-            Debug.Assert(path != null);
+            Debug.AssertNotNull(path);
 
             var data = File.ReadAllText(path);
             var network = new Network();
@@ -28,7 +28,7 @@ namespace Recognition.NeuralNet
 
         public static void SaveNetwork(Network network, string path)
         {
-            Debug.Assert(path != null);
+            Debug.AssertNotNull(path);
 
             var info = new NetworkSerializeInfo();
             info.GetDataFrom(network);
@@ -61,7 +61,7 @@ namespace Recognition.NeuralNet
 
             public void LoadDataTo(Network network)
             {
-                Debug.Assert(network != null);
+                Debug.AssertNotNull(network);
                 // TODO debug asserts
 
                 network.TrainingInfo.FromDictionary(StateInfo);

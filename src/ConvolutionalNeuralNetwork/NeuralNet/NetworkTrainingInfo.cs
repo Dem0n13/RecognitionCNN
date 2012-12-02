@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using Recognition.Utils;
 
 namespace Recognition.NeuralNet
 {
@@ -130,7 +130,7 @@ namespace Recognition.NeuralNet
 
         public void FromDictionary(Dictionary<string, decimal> dictionary)
         {
-            Debug.Assert(dictionary != null);
+            Debug.AssertNotNull(dictionary);
 
             decimal value;
             if (dictionary.TryGetValue("SummEpochMSE", out value))
